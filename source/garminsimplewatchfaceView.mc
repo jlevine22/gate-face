@@ -95,7 +95,6 @@ class garminsimplewatchfaceView extends Ui.WatchFace {
 		for (var n = 0; n < 9; n++) {
 			var chevronPercent = 100*(n+1)/9;
 			var stepsGoalPercent = 100*activity.steps / activity.stepGoal;
-			stepsGoalPercent = 60;
 			if (stepsGoalPercent >= chevronPercent) {
 				dc.fillPolygon(chevrons[n]);
 			}
@@ -107,8 +106,6 @@ class garminsimplewatchfaceView extends Ui.WatchFace {
 		var stats = Sys.getSystemStats();
 		var percent = stats.battery * 100;
 		var remainingString = Lang.format("$1$%", [percent.format("%d")]);
-		
-		percent = 60;
 		
 		var batteryIndicatorStartX = dc.getWidth() / 2;
 		var blockSpace = 2;
