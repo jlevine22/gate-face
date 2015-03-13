@@ -1,0 +1,8 @@
+<resources>
+    <string id="AppName">Gate Face</string>
+
+    <bitmap id="LauncherIcon" filename="images/launcher_icon.png" />
+    <bitmaps>
+    	 <bitmap id="id_stargate" filename="images/stargate.png"/>
+    </bitmaps>
+</resources>
