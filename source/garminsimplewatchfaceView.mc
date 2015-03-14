@@ -48,13 +48,20 @@ class garminsimplewatchfaceView extends Ui.WatchFace {
  		var hour;
  		if (info.hour > 12) {
  			hour = info.hour - 12;
+ 		} else if (info.hour == 0) {
+ 			hour = 12;
  		} else {
  			hour = info.hour;
  		}
  		
+ 		var minuteString;
+ 		if (info.min >= 10) {
+ 			minuteString = Lang.format("$1$", [info.min.format("%d")]);
+ 		} else {
+ 			minuteString = Lang.format("0$1$", [info.min.format("%d")]);
+ 		}
  		var hourString = Lang.format("$1$", [hour]);
-        var minuteString = Lang.format("$1$", [info.min.format("%0.2d")]);
-        var dateString = Lang.format("$1$ $2$", [info.day_of_week, info.day]);
+		var dateString = Lang.format("$1$ $2$", [info.day_of_week, info.day]);
         
         // Position the elements horizontally
         var hourWidth = dc.getTextWidthInPixels(hourString, Gfx.FONT_NUMBER_HOT);
@@ -104,7 +111,7 @@ class garminsimplewatchfaceView extends Ui.WatchFace {
     function drawBatteryIndicator(dc, batteryIndicatorY) {
     	// Draw the battery life
 		var stats = Sys.getSystemStats();
-		var percent = stats.battery * 100;
+		var percent = stats.battery;
 		var remainingString = Lang.format("$1$%", [percent.format("%d")]);
 		
 		var batteryIndicatorStartX = dc.getWidth() / 2;
